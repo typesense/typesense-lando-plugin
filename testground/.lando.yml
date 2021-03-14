@@ -1,0 +1,11 @@
+name: hello-lando
+recipe: lamp
+config:
+  webroot: .
+pluginDirs:
+  - plugins
+services:
+  typesense:
+    type: typesense:0.19.0
+    portforward: 8108
+    apiKey: abc

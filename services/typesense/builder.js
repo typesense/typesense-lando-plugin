@@ -1,7 +1,10 @@
 'use strict';
 
 // Modules
-const _ = require('lodash');
+const _ = {
+  set: require('lodash.set'),
+  merge: require('lodash.merge')
+}
 
 // Builder
 module.exports = {
