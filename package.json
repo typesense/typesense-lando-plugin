@@ -1,0 +1,16 @@
+{
+  "name": "typesense-lando-plugin",
+  "version": "0.1.0",
+  "description": "Lando plugin that exposes Typesense as a service",
+  "main": "index.js",
+  "repository": "https://github.com/typesense/typesense-lando-plugin",
+  "author": "Typesense",
+  "license": "Apache-2.0",
+  "private": false,
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
+}
