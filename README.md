@@ -1,4 +1,4 @@
-# Lando Plugin for Typesense (beta)
+# Lando Plugin for Typesense
 
 This plugin let's you use Typesense as a service in your Lando setup.
 
