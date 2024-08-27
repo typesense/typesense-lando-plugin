@@ -10,8 +10,8 @@ const _ = {
 module.exports = {
   name: 'typesense',
   config: {
-    version: '26.0',
-    supported: ['26.0', '0.25.2', '0.25.1', '0.25.0', '0.24.1', '0.24.0', '0.23.1', '0.23.0', '0.22.2', '0.22.1', '0.22.0', '0.21.0', '0.20.0', '0.19.0', '0.18.0', '0.17.0'],
+    version: '27.0',
+    supported: ['27.0', '26.0', '0.25.2', '0.25.1', '0.25.0', '0.24.1', '0.24.0', '0.23.1', '0.23.0', '0.22.2', '0.22.1', '0.22.0', '0.21.0', '0.20.0', '0.19.0', '0.18.0', '0.17.0'],
     patchesSupported: true,
     confSrc: __dirname,
     port: '8108',
@@ -33,7 +33,7 @@ module.exports = {
         environment: {
           TYPESENSE_API_KEY: options.apiKey,
           TYPESENSE_DATA_DIR: '/data',
-          TYPESENSE_CONFIG: '/etc/typesense/typesense.ini'
+          TYPESENSE_CONFIG: '/etc/typesense/typesense.ini',
         },
         ports: ['8108'],
         volumes: [
