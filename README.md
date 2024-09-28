@@ -21,7 +21,7 @@ Then in your Lando config file, add the following contents:
 ```yaml
 services:
   typesense:
-    type: typesense:26.0
+    type: typesense:27.1
     portforward: 8108
     apiKey: abc
 ```
