@@ -1,4 +1,4 @@
-# Lando Plugin for Typesense
+# Typesense Lando Plugin
 
 This plugin let's you use Typesense as a service in your Lando setup.
 
@@ -16,14 +16,23 @@ Clone this repository into `~/.lando/plugins`:
 git clone https://github.com/typesense/typesense-lando-plugin ~/.lando/plugins/typesense
 ```
 
-Then in your Lando config file, add the following contents:
+or use Lando's `plugin-add`:
+
+```shell
+lando plugin-add https://github.com/typesense/typesense-lando-plugin
+```
+
+Then in your `.lando.yml` , add the following contents:
 
 ```yaml
+name: my-typesense-app
+
 services:
   typesense:
     type: typesense:27.1
     portforward: 8108
     apiKey: abc
+
 ```
 
 Now when you run `lando start`, Typesense will be available on localhost, port 8108.
@@ -33,3 +42,10 @@ You can verify that Typesense is running by running:
 ```shell
 curl http://localhost:8108/health
 ```
+
+For more info you should check out the [docs](https://docs.lando.dev/elasticsearch):
+
+* [Getting Started](https://docs.lando.dev/elasticsearch/)
+* [Configuration](https://docs.lando.dev/elasticsearch/config.html)
+* [Examples](https://github.com/lando/elasticsearch/tree/main/examples)
+* [Development](https://docs.lando.dev/elasticsearch/development.html)
