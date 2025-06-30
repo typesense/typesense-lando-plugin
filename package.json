@@ -1,5 +1,5 @@
 {
-  "name": "@lando/typesense",
+  "name": "typesense-lando-plugin",
   "version": "0.1.0",
   "description": "Lando plugin that exposes Typesense as a service",
   "main": "index.js",
