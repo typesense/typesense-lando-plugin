@@ -43,9 +43,7 @@ You can verify that Typesense is running by running:
 curl http://localhost:8108/health
 ```
 
-For more info you should check out the [docs](https://docs.lando.dev/elasticsearch):
+For more info you should check out the [docs](https://docs.lando.dev):
 
-* [Getting Started](https://docs.lando.dev/elasticsearch/)
-* [Configuration](https://docs.lando.dev/elasticsearch/config.html)
-* [Examples](https://github.com/lando/elasticsearch/tree/main/examples)
-* [Development](https://docs.lando.dev/elasticsearch/development.html)
+* [Getting Started](https://docs.lando.dev/getting-started/)
+* [Landofile](https://docs.lando.dev/landofile)
