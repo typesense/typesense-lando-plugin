@@ -1,0 +1,43 @@
+name: Test Typesense Lando Plugin
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Lando
+        run: |
+          curl -fsSL https://files.lando.dev/installer.sh | bash
+          echo "$HOME/.lando/bin" >> $GITHUB_PATH
+
+      - name: Add plugin to Lando
+        run: |
+          lando plugin-add .
+
+      - name: Run npm install in plugin directory
+        run: |
+          npm install
+        working-directory: ~/.lando/plugins/typesense-lando-plugin
+
+      - name: Create test project with .lando.yml
+        run: |
+          mkdir test-project
+          cp .lando.yml test-project/.lando.yml
+
+      - name: Start Lando
+        run: |
+          cd test-project
+          lando start
