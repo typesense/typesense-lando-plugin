@@ -28,6 +28,10 @@ jobs:
         run: |
           lando plugin-add .
 
+      - name: Debug lando
+        run: |
+          lando config
+
       - name: Run npm install in plugin directory
         run: |
           npm install
