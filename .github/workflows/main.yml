@@ -14,10 +14,15 @@ jobs:
         with:
           node-version: '18'
 
+      - name: sHOW CURRENT PATH
+        run: |
+          pwd
+          ls -la
+          echo $PATH
+
       - name: Install Lando
         run: |
-          curl -fsSL https://files.lando.dev/installer.sh | bash
-          echo "$HOME/.lando/bin" >> $GITHUB_PATH
+          /bin/bash -c "$(curl -fsSL https://get.lando.dev/setup-lando.sh)"
 
       - name: Add plugin to Lando
         run: |
