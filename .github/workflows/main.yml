@@ -35,7 +35,7 @@ jobs:
       - name: Run npm install in plugin directory
         run: |
           npm install
-        working-directory: ~/.lando/plugins/typesense-lando-plugin
+        working-directory: /home/runner/.lando/plugins/typesense-lando-plugin
 
       - name: Create test project with .lando.yml
         run: |
