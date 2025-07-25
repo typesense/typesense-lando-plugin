@@ -1,0 +1,9 @@
+name: my-typesense-app
+
+services:
+  typesense:
+    type: typesense:27.1
+    portforward: 8108
+    apiKey: abc
+    TYPESENSE_DATA_DIR: /data
+    
