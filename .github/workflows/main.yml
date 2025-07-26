@@ -55,3 +55,15 @@ jobs:
         run: |
           cd test-project
           lando start
+
+          # Healthcheck for Typesense
+          echo "Waiting for Typesense to be healthy..."
+          for i in {1..30}; do
+            if curl -s http://localhost:8108/health | grep -q '"ok":true'; then
+              echo "Typesense is healthy!"
+              break
+            else
+              echo "Typesense not healthy yet, retrying in 2s..."
+              sleep 2
+            fi
+          done
