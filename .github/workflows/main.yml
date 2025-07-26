@@ -40,7 +40,16 @@ jobs:
       - name: Create test project with .lando.yml
         run: |
           mkdir test-project
-          cp .github/workflows/mock_lando test-project/.lando.yml
+          cat > test-project/.lando.yml <<'EOF'
+          name: my-typesense-app
+
+          services:
+            typesense:
+              type: typesense:27.1
+              portforward: 8108
+              apiKey: abc
+              TYPESENSE_DATA_DIR: /data
+          EOF
 
       - name: Start Lando
         run: |
