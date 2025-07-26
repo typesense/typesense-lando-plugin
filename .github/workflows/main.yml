@@ -40,7 +40,7 @@ jobs:
       - name: Create test project with .lando.yml
         run: |
           mkdir test-project
-          cp ./.github/workflows/mock_lando test-project/.lando.yml
+          cp .github/workflows/mock_lando test-project/.lando.yml
 
       - name: Start Lando
         run: |
