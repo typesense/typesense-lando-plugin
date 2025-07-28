@@ -6,6 +6,19 @@ const _ = {
   merge: require('lodash.merge')
 }
 
+
+function getTypesenseOptions(options) {
+  const result = {};
+  for (const key in options) {
+    if (Object.prototype.hasOwnProperty.call(options, key) && key.startsWith('TYPESENSE_')) {
+      result[key] = options[key];
+    }
+  }
+
+  return result;
+}
+
+
 // Builder
 module.exports = {
   name: 'typesense',
@@ -34,6 +47,7 @@ module.exports = {
           TYPESENSE_API_KEY: options.apiKey,
           TYPESENSE_DATA_DIR: '/data',
           TYPESENSE_CONFIG: '/etc/typesense/typesense.ini',
+          ...getTypesenseOptions(options),
         },
         ports: ['8108'],
         volumes: [
