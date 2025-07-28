@@ -1,0 +1,69 @@
+name: Test Typesense Lando Plugin
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: sHOW CURRENT PATH
+        run: |
+          pwd
+          ls -la
+          echo $PATH
+
+      - name: Install Lando
+        run: |
+          /bin/bash -c "$(curl -fsSL https://get.lando.dev/setup-lando.sh)"
+
+      - name: Add plugin to Lando
+        run: |
+          lando plugin-add .
+
+      - name: Debug lando
+        run: |
+          lando config
+
+      - name: Run npm install in plugin directory
+        run: |
+          npm install
+        working-directory: /home/runner/.lando/plugins/typesense-lando-plugin
+
+      - name: Create test project with .lando.yml
+        run: |
+          mkdir test-project
+          cat > test-project/.lando.yml <<'EOF'
+          name: my-typesense-app
+
+          services:
+            typesense:
+              type: typesense:27.1
+              portforward: 8108
+              apiKey: abc
+              TYPESENSE_DATA_DIR: /data
+          EOF
+
+      - name: Start Lando
+        run: |
+          cd test-project
+          lando start
+
+          # Healthcheck for Typesense
+          echo "Waiting for Typesense to be healthy..."
+          for i in {1..30}; do
+            if curl -s http://localhost:8108/health | grep -q '"ok":true'; then
+              echo "Typesense is healthy!"
+              break
+            else
+              echo "Typesense not healthy yet, retrying in 2s..."
+              sleep 2
+            fi
+          done
